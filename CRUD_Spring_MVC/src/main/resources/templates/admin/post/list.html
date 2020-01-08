@@ -3,7 +3,7 @@
 	xmlns:th="http://www.thymeleaf.org"
 	layout:decorator="layouts/main">
 <head>
-	<title>Lista de Posts</title>
+	<title>List Posts</title>
 </head>
 <body>
 		
@@ -18,31 +18,33 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th>Titulo</th>
-					<th>Publicado en</th>
-					<th>Autor</th>
-					<th>Ver</th>
-					<th>Editar</th>
-					<th>Borrar</th>
+					<th>Title</th>
+					<th>Posted On</th>
+					<th>Slug</th>
+					<th>Author</th>
+					<th>View</th>
+					<th>Edit</th>
+					<th>Delete</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="post : ${posts}">
 					<td th:text="${post.title}">title</td>
-					<td th:text="${#calendars.format(post.postedOn,'M/dd/yyyy hh:mm:ss a')}">Publicado en</td>
-					<td th:text="${post.author.firstName + ' ' + post.author.lastName}">Autor</td>
-					<td><a href="#" th:href="@{/admin/post/} + ${post.id}">Ver</a></td>
-					<td><a href="#" th:href="@{/admin/post/edit/} + ${post.id}">Editar</a></td>
-					<td><a href="#" th:href="@{/admin/post/delete/} + ${post.id}">Borrar</a></td>
+					<td th:text="${#calendars.format(post.postedOn,'M/dd/yyyy hh:mm:ss a')}">posted on</td>
+					<td th:text="${post.slug}">slug</td>
+					<td th:text="${post.author.firstName + ' ' + post.author.lastName}">author</td>
+					<td><a href="#" th:href="@{/admin/post/} + ${post.id}">View</a></td>
+					<td><a href="#" th:href="@{/admin/post/edit/} + ${post.id}">Edit</a></td>
+					<td><a href="#" th:href="@{/admin/post/delete/} + ${post.id}">Delete</a></td>
 				</tr>
 			</tbody>
 		</table>
 		
-		<a th:href="@{/admin/post/create}">Insertar nuevo Post</a>
+		<a th:href="@{/admin/post/create}">Add New Post</a>
 		<br/><br/>
 		
 		<p th:if="${posts.size() == 0}">
-			<div class="alert alert-warning" role="alert">No se encontraron posts.</div>
+			<div class="alert alert-warning" role="alert">No Posts Found.</div>
 		</p>
 		
 	</div>

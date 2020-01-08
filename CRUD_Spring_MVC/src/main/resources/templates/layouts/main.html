@@ -26,7 +26,7 @@
 		<nav class="navbar navbar-default">
 		    <div class="container-fluid">
 		        <div class="navbar-header">
-		            <a class="navbar-brand" href="/">Mi Blog</a>
+		            <a class="navbar-brand" href="/">My Blog</a>
 		        </div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				    <ul class="nav navbar-nav">
@@ -34,25 +34,25 @@
 				        <li class="dropdown" th:class="${controllerName == 'Post'} ? 'dropdown active' : 'dropdown'">
 				            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Posts <span class="caret"></span></a>
 				            <ul class="dropdown-menu">
-				                <li><a href="/posts/list">Lista</a></li>
+				                <li><a href="/posts/list">List</a></li>
 				            </ul>
 				        </li>
 				        <li class="dropdown" th:class="${controllerName == 'Author'} ? 'dropdown active' : 'dropdown'">
-				            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Autores <span class="caret"></span></a>
+				            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Authors <span class="caret"></span></a>
 				            <ul class="dropdown-menu">
-				                <li><a href="/authors/list">Lista</a></li>
+				                <li><a href="/authors/list">List</a></li>
 				            </ul>
 				        </li>
 						<li class="dropdown" th:class="${controllerName == 'AdminPost'} ? 'dropdown active' : 'dropdown'" sec:authorize="hasRole('ROLE_ADMIN')">
 				            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
 				            <ul class="dropdown-menu">
 				                <li><a href="/admin/posts/">Posts</a></li>
-				                <li><a href="/admin/authors/">Autores</a></li>				                
+				                <li><a href="/admin/authors/">Authors</a></li>				                
 				            </ul>
 				        </li>					        
 				    </ul>
 				    <div class="navbar-text navbar-right">
-			            Bienvenido <span sec:authentication="name">Invitado</span> | 
+			            Welcome <span sec:authentication="name">Guest</span> | 
 				    	<form sec:authorize="isAuthenticated()" id="frmlogout" th:action="@{/logout}" method="post" class="form-inline">
 				    		<a href="javascript:{}" onclick="document.getElementById('frmlogout').submit(); return false;">Logout</a>
 				    	</form>
