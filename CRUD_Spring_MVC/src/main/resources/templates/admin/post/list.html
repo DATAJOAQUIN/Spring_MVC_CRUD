@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	layout:decorator="layouts/main">
+<head>
+	<title>Lista de Posts</title>
+</head>
+<body>
+		
+	<div layout:fragment="content">
+	
+		<h2>Posts</h2>
+		
+		<div th:if="${message}" class="alert alert-success" role="alert">
+			<p th:text="${message}">success message</p>
+		</div>
+		
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Titulo</th>
+					<th>Publicado en</th>
+					<th>Autor</th>
+					<th>Ver</th>
+					<th>Editar</th>
+					<th>Borrar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="post : ${posts}">
+					<td th:text="${post.title}">title</td>
+					<td th:text="${#calendars.format(post.postedOn,'M/dd/yyyy hh:mm:ss a')}">Publicado en</td>
+					<td th:text="${post.author.firstName + ' ' + post.author.lastName}">Autor</td>
+					<td><a href="#" th:href="@{/admin/post/} + ${post.id}">Ver</a></td>
+					<td><a href="#" th:href="@{/admin/post/edit/} + ${post.id}">Editar</a></td>
+					<td><a href="#" th:href="@{/admin/post/delete/} + ${post.id}">Borrar</a></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<a th:href="@{/admin/post/create}">Insertar nuevo Post</a>
+		<br/><br/>
+		
+		<p th:if="${posts.size() == 0}">
+			<div class="alert alert-warning" role="alert">No se encontraron posts.</div>
+		</p>
+		
+	</div>
+		
+</body>
+</html>
